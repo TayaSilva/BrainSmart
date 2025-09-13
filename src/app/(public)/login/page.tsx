@@ -6,6 +6,7 @@ import GoogleLogo from '@/../public/images/google-logo.png';
 import Input from '@/app/components/Input/Input';
 import Link from 'next/link';
 import GradientButton from '@/app/components/GradientButton/GradientButton';
+import { signIn } from 'next-auth/react';
 
 export default function Login() {
 	return (
@@ -21,7 +22,7 @@ export default function Login() {
 				<div className="relative z-10 w-full max-w-md bg-white/10 backdrop-blur-md border border-white/30 rounded-tl-2xl rounded-bl-2xl shadow-2xl p-8 flex flex-col items-center justify-center">
 					<h1 className="text-2xl font-bold uppercase">login</h1>
 					<button
-						// onClick={() => signIn('google')}
+						onClick={() => signIn('google')}
 						className="my-4 cursor-pointer w-full flex items-center justify-center gap-2 bg-white/80 text-gray-800 font-semibold py-2 px-4 rounded-lg shadow hover:bg-gray-100 transition"
 					>
 						<Image src={GoogleLogo} alt="Google Logo" width={20} height={20} />
