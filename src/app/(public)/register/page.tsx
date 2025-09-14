@@ -18,7 +18,7 @@ export default function Register() {
 		>
 			<div className="flex flex-col justify-center w-full md:flex-row z-10 ">
 				<div className="relative z-10 w-full max-w-md bg-white/10 backdrop-blur-md border border-white/30 rounded-tl-2xl rounded-bl-2xl shadow-2xl p-8 flex flex-col items-center justify-center">
-					<h1 className="text-2xl font-bold uppercase">cadastre-se uyguygyttyfrtyfyvf</h1>
+					<h1 className="text-2xl font-bold uppercase">cadastre-se </h1>
 					{/* <button
 						onClick={() => signIn('google')}
 						className="my-4 cursor-pointer w-full flex items-center justify-center gap-2 bg-white/80 text-gray-800 font-semibold py-2 px-4 rounded-lg shadow hover:bg-gray-100 transition"
