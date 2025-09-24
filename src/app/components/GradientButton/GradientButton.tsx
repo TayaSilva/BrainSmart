@@ -15,9 +15,9 @@ const GradientButton: React.FC<ButtonProps> = ({
 			{...props}
 			className={`
         bg-gradient-to-r from-purple-500 via-pink-500 to-[#26335D]
-        text-white font-semibold py-2 px-6 rounded-lg shadow-lg
+        text-white font-semibold py-2 px-6 rounded-full 
         transform transition-all duration-300 ease-in-out
-        hover:scale-105 hover:brightness-110 hover:shadow-2xl cursor-pointer
+        hover:scale-105 shadow-[0_20px_25px_rgba(0,0,0,0.5)] hover:brightness-110 hover:shadow-2xl cursor-pointer
         ${className || ''}
       `}
 		>
