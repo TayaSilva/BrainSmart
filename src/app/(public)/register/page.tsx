@@ -18,22 +18,33 @@ const raleway = Raleway({
 export default function Register() {
 	const router = useRouter();
 	const [name, setName] = useState('');
-	const [nickname, setNickname] = useState('');
+	const [apelido, setapelido] = useState('');
 	const [email, setEmail] = useState('');
+	// const [cpf, setCpf] = useState('');
 	const [password, setPassword] = useState('');
 	const [error, setError] = useState('');
 	const [showPassword, setShowPassword] = useState(false);
 	const { cpf, handleChange, handleBlur, isValid } = useCPF();
 
 	const handleRegister = async (e: React.FormEvent) => {
+				console.log("Enviando para o backend:", {
+  name,
+  apelido,
+  email,
+  cpf,
+  password,
+});
 		e.preventDefault();
 		setError('');
+
+
+
 
 		try {
 			const res = await fetch('http://localhost:3001/register', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ name, nickname, email, cpf, password }),
+				body: JSON.stringify({ name, apelido, email, cpf, password }),
 			});
 
 			const data = await res.json();
@@ -85,8 +96,8 @@ export default function Register() {
 							type="text"
 							placeholder="Como quer ser chamado?"
 							maxLength={15}
-							value={nickname}
-							onChange={(e) => setNickname(e.target.value)}
+							value={apelido}
+							onChange={(e) => setapelido(e.target.value)}
 						/>
 						<Input
 							label="Email"
@@ -95,7 +106,7 @@ export default function Register() {
 							value={email}
 							onChange={(e) => setEmail(e.target.value)}
 						/>
-						<Input
+					<Input
 							label="CPF"
 							type="text"
 							placeholder="Digite seu CPF"
