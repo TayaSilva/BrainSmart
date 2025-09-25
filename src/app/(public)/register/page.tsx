@@ -8,6 +8,7 @@ import BackRegister from '@/../public/images/background-register.png';
 import Input from '@/app/components/Input/Input';
 import Link from 'next/link';
 import GradientButton from '@/app/components/GradientButton/GradientButton';
+import { useCPF } from '@/app/hooks/useCpf';
 
 const raleway = Raleway({
 	subsets: ['latin'],
@@ -19,9 +20,10 @@ export default function Register() {
 	const [name, setName] = useState('');
 	const [nickname, setNickname] = useState('');
 	const [email, setEmail] = useState('');
-	const [cpf, setCpf] = useState('');
 	const [password, setPassword] = useState('');
 	const [error, setError] = useState('');
+	const [showPassword, setShowPassword] = useState(false);
+	const { cpf, handleChange, handleBlur, isValid } = useCPF();
 
 	const handleRegister = async (e: React.FormEvent) => {
 		e.preventDefault();
@@ -74,12 +76,15 @@ export default function Register() {
 							type="text"
 							placeholder="Digite seu nome completo"
 							value={name}
+							maxLength={200}
+							minLength={5}
 							onChange={(e) => setName(e.target.value)}
 						/>
 						<Input
 							label="Apelido"
 							type="text"
 							placeholder="Como quer ser chamado?"
+							maxLength={15}
 							value={nickname}
 							onChange={(e) => setNickname(e.target.value)}
 						/>
@@ -95,9 +100,10 @@ export default function Register() {
 							type="text"
 							placeholder="Digite seu CPF"
 							value={cpf}
-							onChange={(e) => setCpf(e.target.value)}
-							mask="###.###.###-##"
+							onChange={handleChange}
+							onBlur={handleBlur}
 						/>
+
 						<Input
 							label="Senha"
 							type="password"
@@ -105,6 +111,9 @@ export default function Register() {
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}
 						/>
+						{!isValid && cpf.length > 0 && (
+							<p className="text-red-500 text-sm">CPF inválido</p>
+						)}
 						{error && <p className="text-red-500 text-sm">{error}</p>}
 						<GradientButton
 							type="submit"
