@@ -3,7 +3,6 @@ import { Raleway } from 'next/font/google';
 import Image from 'next/image';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import BackLogin from '@/../public/images/background-login.png';
 import BgLogin from '@/../public/images/bg-login.png';
 import GoogleLogo from '@/../public/images/google-logo.png';
 import Input from '@/app/components/Input/Input';
