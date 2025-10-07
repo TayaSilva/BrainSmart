@@ -5,9 +5,9 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import BgRegister from '@/../public/images/bg-register.png';
 import BackRegister from '@/../public/images/background-register.png';
-import Input from '@/app/components/Input/Input';
+import Input from '@/app/components/input/Input';
 import Link from 'next/link';
-import GradientButton from '@/app/components/GradientButton/GradientButton';
+import GradientButton from '@/app/components/gradient-button/GradientButton';
 import { useCPF } from '@/app/hooks/useCpf';
 
 const raleway = Raleway({
@@ -27,18 +27,15 @@ export default function Register() {
 	const { cpf, handleChange, handleBlur, isValid } = useCPF();
 
 	const handleRegister = async (e: React.FormEvent) => {
-				console.log("Enviando para o backend:", {
-  name,
-  apelido,
-  email,
-  cpf,
-  password,
-});
+		console.log('Enviando para o backend:', {
+			name,
+			apelido,
+			email,
+			cpf,
+			password,
+		});
 		e.preventDefault();
 		setError('');
-
-
-
 
 		try {
 			const res = await fetch('http://localhost:3001/register', {
@@ -106,7 +103,7 @@ export default function Register() {
 							value={email}
 							onChange={(e) => setEmail(e.target.value)}
 						/>
-					<Input
+						<Input
 							label="CPF"
 							type="text"
 							placeholder="Digite seu CPF"

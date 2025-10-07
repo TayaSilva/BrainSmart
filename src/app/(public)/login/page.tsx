@@ -5,9 +5,9 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import BgLogin from '@/../public/images/bg-login.png';
 import GoogleLogo from '@/../public/images/google-logo.png';
-import Input from '@/app/components/Input/Input';
+import Input from '@/app/components/input/Input';
 import Link from 'next/link';
-import GradientButton from '@/app/components/GradientButton/GradientButton';
+import GradientButton from '@/app/components/gradient-button/GradientButton';
 import { signIn } from 'next-auth/react';
 
 const raleway = Raleway({
