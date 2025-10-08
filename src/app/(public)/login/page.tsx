@@ -42,7 +42,7 @@ export default function Login() {
 
 			localStorage.setItem('token', data.token);
 
-			router.push('/');
+			router.push('/home');
 		} catch (err) {
 			setError('Erro de conexão com o servidor');
 			console.error(err);

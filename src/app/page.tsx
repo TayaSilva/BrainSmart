@@ -32,12 +32,12 @@ export default function Home() {
 
 	return (
 		<div className="relative flex flex-col items-center justify-center min-h-screen p-24 bg-primary">
-			<div className="absolute bottom-100 left-0">
+			{/* <div className="absolute bottom-100 left-0">
 				<Image src={Background1} alt="Background Left" />
 			</div>
 			<div className="absolute bottom-200 right-0">
 				<Image src={Background2} alt="Background Right" />
-			</div>
+			</div> */}
 
 			<div className="z-10 flex flex-col items-center">
 				<h1 className="text-4xl text-white font-bold">

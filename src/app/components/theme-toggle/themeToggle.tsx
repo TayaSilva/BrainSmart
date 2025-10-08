@@ -14,7 +14,7 @@ export default function ThemeToggle() {
 	};
 
 	return (
-		<label className="swap swap-rotate fixed top-4 left-4 z-50">
+		<label className="swap  shadow-2xs bg-fuchsia-500 rounded-full p-2 swap-rotate fixed top-4 left-4 z-50">
 			<input
 				type="checkbox"
 				checked={theme === 'synthwave'}
@@ -22,7 +22,7 @@ export default function ThemeToggle() {
 			/>
 
 			<svg
-				className="swap-off h-6 w-6 fill-current"
+				className="swap-off h-6 w-6 fill-current text-muted"
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 24 24"
 			>
