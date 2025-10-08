@@ -3,12 +3,11 @@ import { Raleway } from 'next/font/google';
 import Image from 'next/image';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import BackLogin from '@/../public/images/background-login.png';
 import BgLogin from '@/../public/images/bg-login.png';
 import GoogleLogo from '@/../public/images/google-logo.png';
-import Input from '@/app/components/Input/Input';
+import Input from '@/app/components/input/Input';
 import Link from 'next/link';
-import GradientButton from '@/app/components/GradientButton/GradientButton';
+import GradientButton from '@/app/components/gradient-button/GradientButton';
 import { signIn } from 'next-auth/react';
 
 const raleway = Raleway({
@@ -43,7 +42,7 @@ export default function Login() {
 
 			localStorage.setItem('token', data.token);
 
-			router.push('/');
+			router.push('/home');
 		} catch (err) {
 			setError('Erro de conexão com o servidor');
 			console.error(err);
