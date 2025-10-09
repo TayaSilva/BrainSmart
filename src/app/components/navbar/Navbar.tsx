@@ -4,24 +4,27 @@ import { useState } from 'react';
 import UserDropdown from '@/app/(private)/home/components/user-dropdown/UserDropdown';
 import ThemeToggle from '../theme-toggle/themeToggle';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function Navbar() {
-	const [loggedIn, setLoggedIn] = useState(true); // true = usuário logado
+	const [loggedIn, setLoggedIn] = useState(true);
 	const [nickname, setNickname] = useState('JhonVi');
+	const router = useRouter();
 
 	const handleLogout = () => {
-		setLoggedIn(false);
-		setNickname('');
-	};
+		localStorage.removeItem('userToken');
+		localStorage.removeItem('userAvatar');
+		localStorage.removeItem('userName');
 
+		// Redireciona pro login
+		router.push('/login');
+	};
 	return (
 		<nav className="navbar bg-base-100/60 shadow-md px-6 py-6 flex justify-between items-center backdrop-blur border-b border-base-300">
-			{/* 🌓 Toggle de tema - canto esquerdo */}
 			<div>
 				<ThemeToggle />
 			</div>
 
-			{/* 😎 Saudação + dropdown - canto direito */}
 			<div className="flex items-center gap-4">
 				{loggedIn ? (
 					<>

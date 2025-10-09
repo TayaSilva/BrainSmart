@@ -1,17 +1,29 @@
-// src/components/UserDropdown.tsx
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 interface UserDropdownProps {
-	avatarUrl?: string;
-	onLogout: () => void; // callback que vai chamar quando clicar em sair
+	onLogout: () => void;
 }
 
-const UserDropdown: React.FC<UserDropdownProps> = ({
-	avatarUrl = 'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp',
-	onLogout,
-}) => {
+const UserDropdown: React.FC<UserDropdownProps> = ({ onLogout }) => {
+	// Pega avatar do localStorage ou usa um default
+	const [avatarUrl, setAvatarUrl] = useState(
+		localStorage.getItem('userAvatar') ||
+			'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'
+	);
+
+	// Atualiza avatar quando localStorage mudar (ex: ao trocar no perfil)
+	useEffect(() => {
+		const handleStorage = () => {
+			const updatedAvatar = localStorage.getItem('userAvatar');
+			if (updatedAvatar) setAvatarUrl(updatedAvatar);
+		};
+
+		window.addEventListener('storage', handleStorage);
+		return () => window.removeEventListener('storage', handleStorage);
+	}, []);
+
 	return (
 		<div className="dropdown dropdown-end">
 			<div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
@@ -24,11 +36,15 @@ const UserDropdown: React.FC<UserDropdownProps> = ({
 				className="menu menu-sm dropdown-content bg-base-100/85 rounded-box z-1 mt-2 w-52 p-2 shadow"
 			>
 				<li>
-					<a className="justify-between">Perfil</a>
+					<a href="/profile" className="justify-between">
+						Meu perfil
+					</a>
 				</li>
-				<li>
-					<a>Configuração</a>
-				</li>
+				{/* <li>
+					<a>
+						Configuração <span className="badge text-sm">Em breve</span>
+					</a>
+				</li> */}
 				<li>
 					<button onClick={onLogout} className="w-full text-left font-semibold">
 						Sair
